@@ -17,7 +17,7 @@
 -Different dev and prod bundles
 
 
-#Namaste Food
+# Namaste Food
 /**
  * Header
  * - Logo
@@ -34,3 +34,22 @@
  * - Address
  * - Contact
  */
+
+ Two types of export/import
+ 1. Default Export/Import
+
+ export defualt Component;
+ import Component from "path";
+
+ 2. Named Export/Import
+ export const Component;
+ import {Component} from "path";
+
+ # React Hooks
+ (Normal JS utility functions -written by facebook developer- they are written inside the nodemodules->react)
+
+ how do use it 
+ 
+ there are 2 important hooks
+ -useState()- superpowerful state variable in react
+ -useEffect()-
