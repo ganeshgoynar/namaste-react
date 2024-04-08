@@ -53,3 +53,9 @@
  there are 2 important hooks
  -useState()- superpowerful state variable in react
  -useEffect()-
+
+ # 2types of routing in web apps
+ -client side Routing
+ -server side routing
+ ->when we were use anchor tag then server side routing happens
+ but by link tag there is client sdie routing

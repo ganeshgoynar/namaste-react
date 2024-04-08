@@ -1,7 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
-
+import { Link } from "react-router-dom";
 
 const Body =()=>{
     //Local State variable-super powerful variable
@@ -25,7 +25,7 @@ const Body =()=>{
         setListOfRestaurant(
             json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants
           );
-          setFilteredRestaurant(
+        setFilteredRestaurant(
             json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants
           );
     };
@@ -33,8 +33,8 @@ const Body =()=>{
     return listOfRestaurant.length === 0 ? (
         <Shimmer />
       ) : (
-        <div className="body">
-            <div className="filter"> 
+    <div className="body">
+        <div className="filter"> 
             <div className="search">
             <input
             type="text"
@@ -43,6 +43,7 @@ const Body =()=>{
               setSearchText(e.target.value);
             }}
           />       
+          
             <button
             
             onClick={() => {
@@ -60,6 +61,7 @@ const Body =()=>{
             Search
           </button>
         </div>
+        
                 <button 
                 className="filter-btn" 
                 onClick={()=>{
@@ -71,7 +73,12 @@ const Body =()=>{
             </div>
             <div className="res-container">
                {filteredRestaurant.map((restaurant) =>(
-                <RestaurantCard key={restaurant.info.id} resData={restaurant}/>
+                <Link 
+                key={restaurant.info.id}
+                to ={"/restaurants/"+restaurant.info.id}
+                >
+                  <RestaurantCard resData={restaurant}/>
+                  </Link>
                 ))}
 
             </div>
