@@ -19,7 +19,6 @@ const Body =()=>{
     const fetchData = async () =>{
         const data = await fetch(
             "https://www.swiggy.com/mapi/homepage/getCards?lat=12.9351929&lng=77.62448069999999"
-
         );
         const json = await data.json();
         console.log(json.data.success.cards[1].gridWidget.gridElements.infoWithStyle.restaurants);
@@ -43,23 +42,19 @@ const Body =()=>{
         <Shimmer />
       ) : (
     <div className="body">
-        <div className="filter"> 
-            <div className="search">
+        <div className="filter flex"> 
+            <div className="search m-4 p-4 flex items-center">
             <input
             type="text"
+            className="border border-solid border-black"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />       
           
-            <button
-            
+            <button className="px-4 py-2 bg-green-100 m-4 rounded-lg"
             onClick={() => {
-              // Filter the restraunt cards and update the UI
-              // searchText
-              console.log(searchText);
-
               const filteredRestaurant = listOfRestaurant.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
@@ -70,17 +65,19 @@ const Body =()=>{
             Search
           </button>
         </div>
-        
+                <div className="search m-4 p-4 flex items-center">
                 <button 
-                className="filter-btn" 
+                className="px-4 py-2 bg-gray-100 rounded-lg" 
                 onClick={()=>{
                     const filteredList = listOfRestaurant.filter(
                         (res) => res.info.avgRating > 4
                       );
                       setListOfRestaurant(filteredList);
-                }}>Top Rated Restaurants</button>
+                }}>Top Rated Restaurants
+                </button>
+                </div>
             </div>
-            <div className="res-container">
+            <div className="flex flex-wrap">
                {filteredRestaurant.map((restaurant) =>(
                 <Link 
                 key={restaurant.info.id}
